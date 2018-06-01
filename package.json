@@ -1,0 +1,30 @@
+{
+  "name": "redux-creator",
+  "version": "0.0.1",
+  "description": "Redux Creator",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IceMimosa/redux-creator.git"
+  },
+  "author": "ChenKai <chk19940609@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IceMimosa/redux-creator/issues"
+  },
+  "homepage": "https://github.com/IceMimosa/redux-creator",
+  "keywords": [
+    "redux",
+    "creator"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.49",
+    "@babel/node": "^7.0.0-beta.49",
+    "@babel/core": "^7.0.0-beta.49",
+    "@babel/preset-env": "^7.0.0-beta.49"
+  }
+}
