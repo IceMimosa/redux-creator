@@ -19,8 +19,12 @@
   "homepage": "https://github.com/IceMimosa/redux-creator",
   "keywords": [
     "redux",
+    "create",
     "creator"
   ],
+  "dependencies": {
+    "redux-actions": "^2.4.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.49",
     "@babel/node": "^7.0.0-beta.49",
