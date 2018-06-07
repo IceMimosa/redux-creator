@@ -17,7 +17,7 @@ export const createReducer = (func, initialState) => {
   // 2. 构造 handleActions 需要的 handlers
   const handlers = {};
   onHandlers.forEach(onHandler => {
-    handlers[onHandler.type] = {
+    handlers[onHandler.actionType] = {
       // redux-actions 中 handleAction 的 next 方法
       next(state, action) {
         const result = onHandler.completedHandler(state, action);
