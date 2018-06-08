@@ -1,7 +1,7 @@
 import { handleActions } from "redux-actions";
 
 /**
- * 创建reducer方法, 具体使用参考文档
+ * 创建reducer方法
  */
 export const createReducer = (actionHandle, initialState) => {
   const reducer = new Reducer();
@@ -10,6 +10,9 @@ export const createReducer = (actionHandle, initialState) => {
   return reducer;
 }
 
+/**
+ * Reducer对象
+ */
 class Reducer {
   constructor() {
     this.actionHandle = (data) => data;
@@ -17,7 +20,7 @@ class Reducer {
   }
   getReducerCreator(currentActions) {
     const onHandlers = [];
-    // 1. on方法, 传入action
+    // 1. on方法, 传入actionCreator
     function on(actionCreator) {
       const onHandler = new OnHandler(actionCreator);
       onHandlers.push(onHandler);

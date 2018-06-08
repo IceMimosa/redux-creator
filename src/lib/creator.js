@@ -2,11 +2,13 @@ import * as Utils from './utils';
 import { createActionType, createAction } from './action';
 import { createReducer } from './reducer';
 
+const EMPTY_CREATORS = { actions: [], reducers: [] };
+
 const NAMESPACE_KEY = 'namespace';
 const ACTION_KEY = 'actions';
 const REDUCER_KEY = 'reducers';
-// const MIDDLE_AWARE = 'middleawares';
-const EMPTY_CREATORS = { actions: [], reducers: [] };
+const MIDDLE_AWARE = 'middleawares';
+
 
 /**
  * create方法
@@ -16,12 +18,13 @@ export const create = (func) => {
   if (typeof func === 'function') {
     obj = func.apply(this) || obj;
   }
+  // 1. get creator values
   const namespace = Utils.getOrThrow(obj[NAMESPACE_KEY], `Missing value for ${NAMESPACE_KEY}`);
   const actions = obj[ACTION_KEY] || {};
   const reducers = obj[REDUCER_KEY] || {};
   // const middleawares obj[MIDDLE_AWARE] || {};
 
-  // handle actions
+  // 2. handle actions
   const ns = createActionType(namespace);
   const actionObj = {};
   for (const actionType in actions) {
@@ -30,10 +33,11 @@ export const create = (func) => {
       continue;
     }
     const actionCreator = action.getActionCreator(ns(actionType));
+    // 这里不合并ns
     actionObj[actionType] = actionCreator;
   }
 
-  // handle reducers
+  // 3. handle reducers
   const reducerObj = {};
   for (const reducerType in reducers) {
     const reducer = reducers[reducerType];
@@ -52,6 +56,9 @@ export const create = (func) => {
   }
 }
 
+/**
+ * 连接所有的creators
+ */
 export const connect = (...creators) => {
   let reducers = {};
   let actions = {};
