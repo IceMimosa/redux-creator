@@ -44,7 +44,7 @@ export const create = (func) => {
     if (reducer === undefined) {
       continue;
     }
-    const reducerCreator = reducer.getReducerCreator(actionObj);
+    const reducerCreator = reducer.getReducerCreator(actionObj, reducerType);
     reducerObj[reducerType] = reducerCreator;
   }
 

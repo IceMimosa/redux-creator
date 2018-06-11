@@ -1,4 +1,5 @@
-import { handleActions } from "redux-actions";
+import { handleActions } from 'redux-actions';
+import * as Utils from './utils';
 
 /**
  * 创建reducer方法
@@ -18,15 +19,16 @@ class Reducer {
     this.actionHandle = (data) => data;
     this.initialState = {};
   }
-  getReducerCreator(currentActions) {
+  getReducerCreator(currentActions, reducerType) {
     const onHandlers = [];
     // 1. on方法, 传入actionCreator
     function on(actionCreator) {
+      actionCreator = Utils.getOrThrow(actionCreator, `Missing action for reducer(${reducerType})`)
       const onHandler = new OnHandler(actionCreator);
       onHandlers.push(onHandler);
       return onHandler;
     }
-    if (this.actionHandle != undefined && typeof this.actionHandle === "function") {
+    if (this.actionHandle != undefined && typeof this.actionHandle === 'function') {
       this.actionHandle(on, currentActions);
     }
     // 2. 构造 handleActions 需要的 handlers
