@@ -12,7 +12,7 @@ export const createActionType = (namespace) => (actionType) => `${namespace}#${a
  * @param {Function} payloadCreator payload的创建方法
  * @param {Any} metaCreator meta的创建方法
  */
-export const createAction = (payloadCreator = (data) => data, metaCreator) => {
+export const createAction = (payloadCreator = (data) => data, metaCreator = {}) => {
   const action = new Action();
   action.payloadCreator = payloadCreator;
   action.metaCreator = metaCreator;
@@ -34,7 +34,7 @@ class Action {
       if (typeof this.metaCreator === 'function') {
         meta = metaCreator(...args);
       }
-      
+
       return {
         type: actionType,
         payload: this.payloadCreator(...args),

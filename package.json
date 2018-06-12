@@ -20,7 +20,8 @@
   "keywords": [
     "redux",
     "create",
-    "creator"
+    "creator",
+    "middleware"
   ],
   "dependencies": {
     "redux-actions": "^2.4.0"
