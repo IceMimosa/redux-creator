@@ -6,6 +6,13 @@ Redux Action and Reducer creator.
 npm install --save redux-all-creator
 ```
 
+* test
+
+```sh
+$ yarn
+$ yarn test
+```
+
 ## 2. Usage
 
 ```js
