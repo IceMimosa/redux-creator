@@ -132,6 +132,10 @@ it('test promise status', (done) => {
 })
 ```
 
+## Some examples
+
+* [IceMimosa/react-antd-example](https://github.com/IceMimosa/react-antd-example)
+
 ## Todo
 
 * [ ] Promise data cache
