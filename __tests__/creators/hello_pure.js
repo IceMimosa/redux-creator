@@ -3,15 +3,15 @@ import * as ReduxCreator from '../../src';
 export default ReduxCreator.create({
   namespace: 'hello',
   actions: {
-    hello: ReduxCreator.createAction((data) => { 
-      return `Hello ${data}`;
-    })
+    hello: (data) => { 
+      return `Hello Pure ${data}`;
+    }
   },
   reducers: {
-    hello_pure: ReduxCreator.createReducer((on, actions) => {
+    hello: (on, actions) => {
       on(actions.hello).completed((state, action) => {
         return action.payload;
       })
-    }, '')
+    }
   }
 });

@@ -23,7 +23,6 @@ import * as ReduxCreator from 'redux-all-creator';
 
 ```js
 // hello.js
-
 export default ReduxCreator.create({
   namespace: 'hello',
   actions: {
@@ -37,6 +36,23 @@ export default ReduxCreator.create({
         return action.payload;
       })
     }, '')
+  }
+});
+
+// or pure hello.js
+export default ReduxCreator.create({
+  namespace: 'hello',
+  actions: {
+    hello: (data) => { 
+      return `Hello ${data}`;
+    }
+  },
+  reducers: {
+    hello: (on, actions) => {
+      on(actions.hello).completed((state, action) => {
+        return action.payload;
+      })
+    } // initialState is {}
   }
 });
 ```
@@ -63,6 +79,7 @@ const store = Redux.createStore(
 it('hello world', () => {
   const data = 'Redux Creator';
   store.dispatch(HelloCreator.hello(data))
+  // hello is reduce key
   expect(store.getState().hello).toBe(`Hello ${data}`);
 })
 ```

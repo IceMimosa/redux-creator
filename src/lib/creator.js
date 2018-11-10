@@ -27,9 +27,13 @@ export const create = (func) => {
   const ns = createActionType(namespace);
   const actionObj = {};
   for (const actionType in actions) {
-    const action = actions[actionType];
+    let action = actions[actionType];
     if (action === undefined) {
       continue;
+    }
+    // pure action
+    if (typeof action === 'function') {
+      action = createAction(action)
     }
     const actionCreator = action.getActionCreator(ns(actionType));
     // 这里不合并ns
@@ -39,9 +43,13 @@ export const create = (func) => {
   // 3. handle reducers
   const reducerObj = {};
   for (const reducerType in reducers) {
-    const reducer = reducers[reducerType];
+    let reducer = reducers[reducerType];
     if (reducer === undefined) {
       continue;
+    }
+    // pure reducer
+    if (typeof reducer === 'function') {
+      reducer = createReducer(reducer)
     }
     const reducerCreator = reducer.getReducerCreator(actionObj, reducerType);
     reducerObj[reducerType] = reducerCreator;

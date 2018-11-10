@@ -4,10 +4,11 @@ import promiseMiddleware from 'redux-promise';
 
 import * as ReduxCreator from '../src';
 import HelloCreator from './creators/hello';
+import HelloPureCreator from './creators/hello_pure';
 import PromiseCreator from './creators/promise';
 
 // connect all creators
-const connector = ReduxCreator.connect(HelloCreator, PromiseCreator);
+const connector = ReduxCreator.connect(HelloCreator, HelloPureCreator, PromiseCreator);
 // store init
 const middlewares = [ ReduxCreator.fetchStatusMiddleware, promiseMiddleware ];
 const store = Redux.createStore(
@@ -20,6 +21,13 @@ it('hello world', () => {
   // Dispatch the action
   store.dispatch(HelloCreator.hello(data))
   expect(store.getState().hello).toBe(`Hello ${data}`);
+})
+
+it('hello world pure', () => {
+  const data = 'Redux Creator';
+  // Dispatch the action
+  store.dispatch(HelloPureCreator.hello(data))
+  expect(store.getState().hello_pure).toBe(`Hello Pure ${data}`);
 })
 
 it('test promise', (done) => {

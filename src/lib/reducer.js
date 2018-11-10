@@ -4,7 +4,7 @@ import * as Utils from './utils';
 /**
  * 创建reducer方法
  */
-export const createReducer = (actionHandle, initialState) => {
+export const createReducer = (actionHandle, initialState = {}) => {
   const reducer = new Reducer();
   reducer.actionHandle = actionHandle;
   reducer.initialState = initialState;
