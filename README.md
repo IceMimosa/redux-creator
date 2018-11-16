@@ -1,5 +1,7 @@
 Redux Action and Reducer creator.
 
+[![npm version](https://img.shields.io/badge/npm-v0.0.5-blue.svg)](https://www.npmjs.com/package/redux)
+
 ## 1. Install
 
 ```sh
