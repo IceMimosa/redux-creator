@@ -71,13 +71,22 @@ export const connect = (...creators) => {
   creators.push(fetchCreator);
 
   // connect 所有的 creator
+  let namespaces = [];
   let reducers = {};
   let actions = {};
   for (const creator of creators) {
+    // check ns
+    const ns = creator['@@__NAMESPACE__'];
+    if (namespaces.indexOf(ns) != -1) {
+      throw new Error(`Duplicate Namespace [${ns}]`);
+    }
+    namespaces.push(ns);
+    // handle reducers
     const reducerObj = creator['@@__REDUCERS__'];
     if (!!reducerObj) {
       reducers = {...reducers, ...reducerObj}
     }
+    // handle actions
     const actionObj = creator['@@__ACTIONS__'];
     if (!!actionObj) {
       actions = {...actions, ...actionObj}

@@ -8,7 +8,7 @@ export default ReduxCreator.create({
     })
   },
   reducers: {
-    hello_pure: ReduxCreator.createReducer((on, actions) => {
+    hello: ReduxCreator.createReducer((on, actions) => {
       on(actions.hello).completed((state, action) => {
         return action.payload;
       })
