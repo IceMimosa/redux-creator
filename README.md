@@ -158,4 +158,5 @@ it('test promise status', (done) => {
 ## Todo
 
 * [ ] Promise data cache
+* [ ] Connect with React
 
