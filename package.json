@@ -27,13 +27,13 @@
     "redux-actions": "^2.4.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.49",
-    "@babel/core": "^7.0.0-beta.49",
-    "@babel/node": "^7.0.0-beta.49",
-    "@babel/preset-env": "^7.0.0-beta.49",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "babel-core": "^7.0.0-0",
-    "babel-jest": "^23.0.1",
-    "jest": "^23.1.0",
+    "babel-jest": "^24.0.0",
+    "jest": "^24.0.0",
     "redux": "^4.0.0",
     "redux-mock-store": "^1.5.1",
     "redux-promise": "^0.6.0"
